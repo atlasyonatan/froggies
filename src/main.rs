@@ -3,6 +3,12 @@ use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
 
+#[derive(Debug, Clone, Copy)]
+struct Platform<I, H> {
+    position: I,
+    height: H,
+}
+
 fn main() {
     let path = Path::new("../input.txt");
     let file = File::open(path).unwrap();
@@ -42,10 +48,4 @@ fn main() {
         "Found a longest distance between frogs {}, from {:?} to {:?}. Frogs should begin at a local minima of {} in that region.",
         longest_distance, start, end, local_minima
     )
-}
-
-#[derive(Debug, Clone, Copy)]
-struct Platform<I, H> {
-    position: I,
-    height: H,
 }
